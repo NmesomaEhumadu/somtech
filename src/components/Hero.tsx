@@ -43,7 +43,7 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-magenta bg-clip-text text-transparent">
-              FUTURE PORTFOLIO
+              SOMTECH
             </span>
           </motion.h1>
           
@@ -53,7 +53,7 @@ export const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Building tomorrow's digital experiences with cutting-edge technology
+            Expert Website Development - E-Commerce, Investment, Restaurant, Fashion Stylist & More
           </motion.p>
 
           <motion.div
