@@ -15,7 +15,7 @@ const Index = () => {
       
       <footer className="py-8 border-t border-primary/20">
         <div className="container px-4 text-center text-muted-foreground">
-          <p>© 2024 Futuristic Portfolio. Built with cutting-edge technology.</p>
+          <p>© 2024 SomTech. All types of websites - E-commerce, Investment, Restaurant, Fashion & More.</p>
         </div>
       </footer>
     </div>

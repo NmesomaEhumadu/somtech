@@ -3,27 +3,27 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "Neural Interface",
-    description: "AI-powered brain-computer interface for seamless human-machine interaction",
-    tech: ["React", "TensorFlow", "WebGL"],
+    title: "E-Commerce Empire",
+    description: "Full-featured online store with secure payments, inventory management, and stunning product showcases",
+    tech: ["React", "Stripe", "Supabase"],
     gradient: "from-neon-cyan to-neon-blue",
   },
   {
-    title: "Quantum Dashboard",
-    description: "Real-time quantum computing visualization and control system",
-    tech: ["Next.js", "Three.js", "Python"],
+    title: "Restaurant Deluxe",
+    description: "Beautiful restaurant website with online ordering, menu management, and reservation system",
+    tech: ["Next.js", "Animations", "CMS"],
     gradient: "from-neon-blue to-neon-purple",
   },
   {
-    title: "Holographic UI",
-    description: "3D holographic user interface for augmented reality applications",
-    tech: ["WebXR", "Babylon.js", "TypeScript"],
+    title: "Fashion Stylist Portfolio",
+    description: "Elegant portfolio showcasing fashion collections with booking system and client galleries",
+    tech: ["React", "Gallery", "Animations"],
     gradient: "from-neon-purple to-neon-magenta",
   },
   {
-    title: "Cyber Security Hub",
-    description: "Advanced threat detection and network security monitoring platform",
-    tech: ["Vue.js", "D3.js", "Node.js"],
+    title: "Investment Platform",
+    description: "Professional investment tracking dashboard with real-time analytics and secure client portals",
+    tech: ["Dashboard", "Charts", "Security"],
     gradient: "from-neon-magenta to-neon-cyan",
   },
 ];
@@ -40,10 +40,10 @@ export const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-4 text-glow-cyan">
-            Featured <span className="text-primary">Projects</span>
+            Website <span className="text-primary">Solutions</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Exploring the boundaries of technology and design
+            Eye-catching websites that elevate your business
           </p>
         </motion.div>
 
