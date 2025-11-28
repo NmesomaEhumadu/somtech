@@ -7,12 +7,14 @@ const projects = [
     description: "Full-featured online store with secure payments, inventory management, and stunning product showcases",
     tech: ["React", "Stripe", "Supabase"],
     gradient: "from-neon-cyan to-neon-blue",
+    link: "https://lostoakfarm.store/",
   },
   {
-    title: "Restaurant Deluxe",
-    description: "Beautiful restaurant website with online ordering, menu management, and reservation system",
-    tech: ["Next.js", "Animations", "CMS"],
+    title: "E-Learning Platform",
+    description: "Comprehensive learning management system with course tracking, quizzes, and student progress analytics",
+    tech: ["React", "Node.js", "Vite"],
     gradient: "from-neon-blue to-neon-purple",
+    link: "https://learn-hub-z9sd.vercel.app/",
   },
   {
     title: "Fashion Stylist Portfolio",
@@ -58,41 +60,45 @@ export const Projects = () => {
               className="group relative glass-effect rounded-xl p-8 hover:scale-105 transition-all duration-300"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity`}></div>
-              
-              <h3 className="text-2xl font-bold mb-3 group-hover:text-glow-cyan transition-all">
-                {project.title}
-              </h3>
-              
-              <p className="text-muted-foreground mb-4">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary border border-primary/20"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
 
-              <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="flex items-center gap-2 text-primary hover:text-neon-cyan transition-colors"
-                >
-                  <Github className="w-5 h-5" />
-                  <span>Code</span>
-                </a>
-                <a
-                  href="#"
-                  className="flex items-center gap-2 text-primary hover:text-neon-magenta transition-colors"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                  <span>Live Demo</span>
-                </a>
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-glow-cyan transition-all">
+                  {project.title}
+                </h3>
+
+                <p className="text-muted-foreground mb-4">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary border border-primary/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-4">
+                  <a
+                    href="#"
+                    className="flex items-center gap-2 text-primary hover:text-neon-cyan transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                    <span>Code</span>
+                  </a>
+                  <a
+                    href={project.link || "#"}
+                    target={project.link ? "_blank" : "_self"}
+                    rel={project.link ? "noopener noreferrer" : ""}
+                    className="flex items-center gap-2 text-primary hover:text-neon-magenta transition-colors"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    <span>Live Demo</span>
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}

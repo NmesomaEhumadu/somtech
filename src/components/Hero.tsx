@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${heroBg})`,
@@ -36,7 +36,7 @@ export const Hero = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <motion.h1 
+          <motion.h1
             className="text-6xl md:text-8xl font-bold mb-6 text-glow-cyan"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -46,7 +46,7 @@ export const Hero = () => {
               SOMTECH
             </span>
           </motion.h1>
-          
+
           <motion.p
             className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
@@ -69,12 +69,20 @@ export const Hero = () => {
               <span className="relative z-10">View Projects</span>
               <div className="absolute inset-0 bg-gradient-to-r from-neon-blue to-neon-magenta opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </a>
-            
+
             <a
               href="#contact"
               className="px-8 py-4 glass-effect rounded-lg font-semibold border border-primary/50 hover:border-primary transition-all hover:scale-105"
             >
               Get In Touch
+            </a>
+            <a
+              href="https://www.linkedin.com/in/nmesoma-ehumadu-b38335260"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 glass-effect rounded-lg font-semibold border border-neon-blue/50 hover:border-neon-blue transition-all hover:scale-105 text-neon-blue"
+            >
+              LinkedIn
             </a>
           </motion.div>
         </motion.div>

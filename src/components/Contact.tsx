@@ -14,33 +14,25 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: formData,
-      });
+    // Construct mailto link
+    const subject = `New Inquiry from ${formData.name}`;
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`;
+    const mailtoLink = `mailto:nmesomafaithful@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-      if (error) throw error;
+    // Open email client
+    window.location.href = mailtoLink;
 
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting SomTech. We'll get back to you soon!",
-      });
+    toast({
+      title: "Opening Email Client",
+      description: "Please send the pre-filled email to contact us.",
+    });
 
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } catch (error) {
-      console.error("Error sending message:", error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    setIsSubmitting(false);
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
@@ -111,15 +103,20 @@ export const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            onSubmit={handleSubmit}
+            action="https://formsubmit.co/nmesomafaithful@gmail.com"
+            method="POST"
             className="glass-effect rounded-xl p-8 space-y-4"
           >
+            {/* FormSubmit Configuration */}
+            <input type="hidden" name="_subject" value="New Inquiry from SomTech Portfolio" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="http://localhost:5173" />
+
             <div>
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
                 className="w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/20 focus:border-primary outline-none transition-colors"
               />
@@ -127,9 +124,8 @@ export const Contact = () => {
             <div>
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
                 className="w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/20 focus:border-primary outline-none transition-colors"
               />
@@ -137,29 +133,26 @@ export const Contact = () => {
             <div>
               <input
                 type="tel"
+                name="phone"
                 placeholder="Your Phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 required
                 className="w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/20 focus:border-primary outline-none transition-colors"
               />
             </div>
             <div>
               <textarea
+                name="message"
                 placeholder="Your Message"
                 rows={4}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
                 className="w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/20 focus:border-primary outline-none transition-colors resize-none"
               ></textarea>
             </div>
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-magenta text-background font-semibold rounded-lg hover:scale-105 transition-all flex items-center justify-center gap-2 box-glow-cyan disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-magenta text-background font-semibold rounded-lg hover:scale-105 transition-all flex items-center justify-center gap-2 box-glow-cyan"
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              Send Message
               <Send className="w-4 h-4" />
             </button>
           </motion.form>
